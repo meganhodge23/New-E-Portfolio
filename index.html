@@ -6,7 +6,19 @@
     <title>Megan Hodge</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/6afb0fd171.js" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "5aFOZsHpgkh3A7Vol",
+      });
+   })();
+</script>
 </head>
+
 <body>
     <section id="landing-page">
         <nav>
@@ -28,14 +40,14 @@
                   link__hover-effect--black
                 ">Projects</a>
                </li> 
-               <li class="nav__link">
+               <li class="nav__link" onclick="toggleModal()">
                 <a href="#" class="
                   nav__link--anchor
                   link__hover-effect
                   link__hover-effect--black
                 ">Contact</a>
                </li> 
-               <li class="nav__link click">
+               <li class="nav__link click" onclick="toggleContrast">
                 <a href="#" class="
                   nav__link--anchor
                   link__hover-effect
@@ -51,7 +63,7 @@
                 <p class="header__para">
                     I'm a <b class="orange" >Frontend Software Engineer</b> with a strong passion for building web applications with great experiences.
                     <br>
-                    Here's a bit more <b class="orange">about me</b>.
+                    Here's a bit more <b class="orange click" onclick="toggleModal()">about me</b>.
                 </p>
                 <div class="social__list">
                     <a href="https://www.linkedin.com/in/megan-hodge-b67385281/" target="_blank" class="social__link click">
@@ -66,12 +78,69 @@
                 </div>
             </div>
         </header>
-        <button class="mail__btn click">
+        <button class="mail__btn click" onclick="toggleModal()" >
             <i class="fa-solid fa-envelope"></i>
         </button>
         <a href="#projects" class="scroll">
             <div class="scroll__icon click"></div>
         </a>
+        <div class="modal">
+            <div class="modal__half modal__about">
+                <h3 class="modal__title modal__title--about">Here's a bit about me</h3>
+                <h4 class="modal__sub-title modal__sub-title--about">Frontend Software Engineer</h4>
+                <p class="modal__para">
+                  I'm a 20 year old <b class="orange">frontend software engineer</b> with a passion of crafting solid frontend products with great <b class="orange">user experience.</b>
+                  <br>
+                  With a focus on HTML, CSS, JavaScript, and frameworks like React, I build solutions that are not only <b class="orange">visually appealing</b> but also <b class="orange">perform seamlessly</b> across devices.
+                </p>
+                <div class="modal__languages">
+                     <figure class="modal__language">
+                        <img class="modal__language--img" src="./Assets/HTML img.webp" alt="">
+                        <span class="language__name">HTML</span>
+                    </figure>
+                     <figure class="modal__language">
+                        <img class="modal__language--img" src="./Assets/javascript-logo-javascript-icon-transparent-free-png.webp" alt="">
+                        <span class="language__name">JavaScript</span>
+                    </figure>
+                    <figure class="modal__language">
+                        <img class="modal__language--img" src="./Assets/avuzxc7c9.webp" alt="">
+                        <span class="language__name">CSS</span>
+                    </figure>
+                </div>
+            </div>
+            <div class="modal__half modal__contact">
+                <i class="fa-solid fa-times modal__exit click" onclick="toggleModal()"></i>
+                <h3 class="modal__title modal__title--contact">
+                    Let's have a chat!
+                </h3>
+                <h3 class="modal__sub-title modal__sub-title--contact">
+                    I'm currently open to new opportunites.
+                </h3>
+                <form id="contact__form" onsubmit="contact(event)">
+                    <div class="form__item">
+                        <label class="form__item--label">Name</label>
+                        <input class="input" name="user_name" type="text"></input>
+                    </div>
+                    <div class="form__item">
+                        <label class="form__item--label">Email</label>
+                        <input class="input" name="user_email" type="email"></input>
+                    </div>
+                    <div class="form__item">
+                        <label class="form__item--label">Message</label>
+                        <textarea class="input" name="message" type="text"></textarea>
+                    </div>
+                    <button id="contact__submit" class="form__submit">
+                        Send it my way
+                    </button>
+                </form>
+                <div class="modal__overlay modal__overlay--loading">
+                    <i class="fa-solid fa-spinner"></i>
+                </div>
+                <div class="modal__overlay modal__overlay--success">
+                    Thanks for the message! Looking forward to speaking to you soon.
+                </div>
+            </div>
+        </div>
     </section> 
     <section id="projects">
         <div class="container">
@@ -80,11 +149,102 @@
                 Here are some of my <span class="orange">projects</span>
                </h1> 
                <ul class="project__list">
-                <li class="project"></li>
+                <li class="project">
+                   <div class="project__wrapper">
+                    <img src="./Assets/blinker mockup.png" class="project__img" alt="">
+                    <div class="project__wrapper--bg"></div>
+                    <div class="project__description">
+                        <h3 class="project__description--title">
+                            Car Sales Projects
+                        </h3>
+                        <h4 class="project__description--sub-title">
+                            Html, CSS, JavaScript, Vue, Vuex
+                        </h4>
+                        <p class="project__description--para">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas nobis alias quas mollitia laboriosam hic necessitatibus esse cupiditate vitae tenetur!
+                        </p>
+                        <div class="project__description--links">
+                            <a href="#" class="project__description--link">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                            <a href="#" class="project__description--link">
+                                <i class="fa-brands fa-link"></i>
+                            </a>
+                        </div>
+                    </div>
+                   </div>
+                </li>
+               </ul>
+               <ul class="project__list">
+                <li class="project">
+                   <div class="project__wrapper">
+                    <img src="./Assets/blinker mockup.png" class="project__img" alt="">
+                    <div class="project__wrapper--bg"></div>
+                    <div class="project__description">
+                        <h3 class="project__description--title">
+                            Car Sales Projects
+                        </h3>
+                        <h4 class="project__description--sub-title">
+                            Html, CSS, JavaScript, Vue, Vuex
+                        </h4>
+                        <p class="project__description--para">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas nobis alias quas mollitia laboriosam hic necessitatibus esse cupiditate vitae tenetur!
+                        </p>
+                        <div class="project__description--links">
+                            <a href="#" class="project__description--link">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                            <a href="#" class="project__description--link">
+                                <i class="fa-brands fa-link"></i>
+                            </a>
+                        </div>
+                    </div>
+                   </div>
+                </li>
                </ul>
             </div>
         </div>
     </section>
+    <footer>
+        <div class="container">
+            <div class="row footer__row">
+            <figure>
+                <img class="footer__logo--img" src="./Assets/mhLogo.png" alt=""> 
+            </figure>
+            <div class="footer__social--list">
+                <a href="#" class="
+                footer__social--link
+                link__hover-effect
+                link__hover-effect--white
+                ">
+                GitHub
+                </a>
+                <a href="#" class="
+                footer__social--link
+                link__hover-effect
+                link__hover-effect--white
+                ">
+                LinkedIn
+                </a>
+                <a href="#" class="
+                footer__social--link
+                link__hover-effect
+                link__hover-effect--white
+                ">
+                Contact
+                </a>
+                <a href="#" class="
+                footer__social--link
+                link__hover-effect
+                link__hover-effect--white
+                ">
+                Resume
+                </a>
+            </div>
+            <div class="footer__copyright">Copyright © Megan Hodge 2025</div>
+        </div>
+    </div>
+    </footer>
 </body>
 
 </html>
